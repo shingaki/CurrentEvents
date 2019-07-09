@@ -11,15 +11,18 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-success">
     <a class="navbar-brand" href="/articles">Sports</a>
+
+    <button type="button" class="btn btn-warning scrape">Scrape</button>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" id="scrape" href="#">Scrape <span class="sr-only">(current)</span></a>
-            </li>
+<!--            <li class="nav-item active">-->
+<!--                <a class="nav-link" id="scrape" href="/scrape">Scrape <span class="sr-only">(current)</span></a>-->
+<!--            </li>-->
             <li class="nav-item active">
                 <a class="nav-link" id="browse" href="#">Browse</a>
             </li>
@@ -39,30 +42,20 @@
     </div>
     <div class="background-image"></div>
     <div class="caption"><h1>Mongo Scraper</h1></div>
-    <p>New York Times Edition</p>
+    <p id="message">New York Times Edition</p>
 </div>
 
 <div class = "container">
     {{{body}}}
 </div>
 
-<div class="container-fluid article-container">
-    <div data-id="" class="card">
-        <div class="card-header">
-            <h3>
-                <a class="article-link" target="_blank" rel="noopener noreferrer" id="articles"></a>
-                <a class="btn btn-success save">Save Article</a>
-            </h3>
-        </div>
-        <div class="card-body" id="comment"></div>
-    </div>
-</div>
 
-</div>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="javascript/app.js"></script>
+<script src="/javascript/app.js"></script>
+<script src="/javascript/scrape.js"></script>
+
 
 </body>
 </html>
