@@ -2,19 +2,36 @@
 // Need to call when Browse is clicked
 
 $(function () {
-    $("#home").on("click", function (event) {
+    $("#browse").on("click", function (event) {
         event.preventDefault();
 
         console.log("Here");
 
 
 
-        $.getJSON("/articles", function(data) {
+        $.getJSON("/browse", function(data) {
 
             // For each one
-            for (var i = 5; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++) {
                 // Display the apropos information on the page
-                $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+                console.log(data[i]._id);
+                console.log(data[i].title);
+
+                var dataid = $("<div>");
+                dataid.addClass=("card");
+                dataid.attr("data-id", data[i]._id);
+                var article =  $("<div>");
+                article.addClass("card-header");
+                var articlehdr = $("<h3>");
+                articlehdr.addClass("article-link");
+                articlehdr.addTarget=("_blank");
+                articlehdr.addRel=("noopener noreferrer");
+                articlehdr.attr("article", data[i].title);
+
+
+                // article.attr("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>")
+                // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+                $("#articles").append(articlehdr);
             }
         })
     })

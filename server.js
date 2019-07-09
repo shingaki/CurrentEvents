@@ -11,7 +11,7 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = 8000;
 
 // Initialize Express
 var app = express();
@@ -72,7 +72,7 @@ app.get("/scrape", function(req, res) {
 
 
 // Route for getting all Articles from the db
-app.get("/articles", function(req, res) {
+app.get("/browse", function(req, res) {
     // Grab every document in the Articles collection
     db.Article.find({})
         .then(function(dbArticle) {
