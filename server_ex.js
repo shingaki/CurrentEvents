@@ -1,8 +1,4 @@
 var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-// var axios = require("axios");
-// var cheerio = require("cheerio");
 
 var PORT = process.env.PORT || 8000;
 
@@ -22,36 +18,13 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// var routes = require("./controllers/burgers_controller.js");
+var routes = require("./controllers/burgers_controller.js");
 
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// app.use(routes);
-
-
-
-
-// Require all models
-var db = require("./models");
-
-
-
-
-// Use morgan logger for logging requests
-app.use(logger("dev"));
-
-
-// Connect to the Mongo DB
-
-mongoose.connect("mongodb://localhost/currentEvents", { useNewUrlParser: true });
-
-
-// var MONGODB_URI = process.env.MONGODB_URI
-
-module.exports = db;
-
+app.use(routes);
 
 app.listen(PORT, function() {
     console.log("App now listening at localhost:" + PORT);

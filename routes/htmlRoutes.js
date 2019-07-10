@@ -1,7 +1,11 @@
-app.get("/articles", function(req, res) {
-    res.render("articles.handlebars");
-});
 
-app.get("/", function(req, res) {
-    res.render("index.handlebars.handlebars");
-});
+module.exports = function(app) {
+
+    app.get("/browse", function (req, res) {
+        res.render("browse.handlebars");
+    });
+
+    app.get("/index", function (req, res) {
+        res.render("index.handlebars");
+    });
+}
