@@ -1,24 +1,25 @@
-<!--<div class="container-fluid article-container">-->
-<!--    <div data-id="" class="card">-->
-<!--        <div class="card-header">-->
-<!--            <h3>-->
-<!--                <a class="article-link" target="_blank" rel="noopener noreferrer" id="articles"></a>-->
-<!--                <a class="btn btn-success save">Save Article</a>-->
-<!--            </h3>-->
-<!--        </div>-->
-<!--        <div class="card-body" id="comment"></div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<div class="container"><div class="text-center"></div>
-    <br>
-    <div class="row text-center">
-        <div class="col-md-6">
-            <ul>
-                {{#each article}}
-                        {{> articles/article-block}}
-                {{/each}}
-            </ul></div></div>
-    <br><br>
+<div class=row>
+    <div class="col-12">
+        {{#if articles}}
+            {{#each articles}}
+                <div class="card w-90">
+                    <div class="card-header text-white bg-success">
+                        <a href={{link}} target="_blank" class="text-white">
+                        <h2>{{title}}</h2>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <button id="{{_id}}" class="btn btn-success save-btn">Save Article</button>
+                        <p id="save-msg"></p>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="card text-white bg-warning w-90 p-1">
+                <div class="card-body text-center">
+                    No new articles exist.
+                </div>
+            </div>
+        {{/if}}
+    </div>
 </div>
