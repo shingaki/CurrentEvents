@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>Current Events</title>
 
-    <!-- Added a link to Bootstrap-->
+    <!-- My css files-->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-success">
-    <a class="navbar-brand" href="/articles">Sports</a>
+    <a class="navbar-brand" href="/articles">Mongo Scraper</a>
 
 
     <button type="button" class="btn btn-warning scrape">Scrape</button>
-    <button type="button" class="btn btn-warning browse">Browse</button>
+<!--    <button type="button" class="btn btn-warning browse" href="/browse">Browse</button>-->
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,11 +28,11 @@
 <!--            <li class="nav-item active">-->
 <!--                <a class="nav-link" id="scrape" href="/scrape">Scrape <span class="sr-only">(current)</span></a>-->
 <!--            </li>-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" id="browse" href="/browse">Browse</a>-->
-<!--            </li>-->
             <li class="nav-item active">
-                <a class="nav-link" id="active" href="#">Active</a>
+                <a class="nav-link" id="browse" href="/browse">Browse</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" id="saved" href="#">Saved Articles</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" id="clear" href="#">Clear</a>
@@ -40,12 +42,15 @@
 </nav>
 
 
-<div class="jumbotron text-center">
-    <div class="overlay">
-    </div>
-    <div class="background-image"></div>
-    <div class="caption"><h1>Mongo Scraper</h1></div>
-    <p id="message">New York Times Edition</p>
+<div class="jumbotron text-center background-image">
+<!--    <div class="overlay"><img src="./images/soccer.png">-->
+<!--    </div>-->
+<!--    <div class="background-image"></div>-->
+
+<!--    <div id="img-as-background">-->
+<!--        <img src="./images/soccer.png"></div>-->
+    <div class="caption header"><h1>Mongo Scraper</h1></div>
+    <p id="message" class="header">Sport Illustrated</p>
 </div>
 
 <div class = "container">
@@ -58,7 +63,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--<script src="/javascript/app.js"></script>-->
 <script src="/javascript/scrape.js"></script>
-<script src="/javascript/browse.js"></script>
+<!--<script src="/javascript/browse.js"></script>-->
+<script src="/javascript/save_article.js"></script>
+
 
 
 
