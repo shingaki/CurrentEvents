@@ -6,7 +6,6 @@ module.exports = function (app) {
     var cheerio = require("cheerio");
 
 
-
     app.get("/scrape", function (req, res) {
         // First, we grab the body of the html with axios
         console.log("Scraped Again");
@@ -46,7 +45,7 @@ module.exports = function (app) {
 
 // Route for getting all Articles from the db
     app.get("/browse", function (req, res) {
-        db.Article.find({})
+        db.Article.find({isSaved: false})
             .then(function (dbArticle) {
                 // If we were able to successfully find Articles, send them back to the client
                 var hbsObject;
@@ -64,16 +63,51 @@ module.exports = function (app) {
 
 // Save the Article
 
-app.put("/save/:id", function (req, res) {
-    db.Article.findOneAndUpdate({ _id: req.params.id }, { isSaved: true })
-        .then(function (data) {
-            // If we were able to successfully find Articles, send them back to the client
-            res.json(data);
-        })
-        .catch(function (err) {
-            // If an error occurred, send it to the client
-            res.json(err);
-        });;
-});
+    app.put("/save/:id", function (req, res) {
+        db.Article.findOneAndUpdate({_id: req.params.id}, {isSaved: true})
+            .then(function (data) {
+                // If we were able to successfully find Articles, send them back to the client
+                res.json(data);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+        ;
+    });
+
+
+// Route for getting all Articles from the db
+    app.get("/saved", function (req, res) {
+        db.Article.find({isSaved: true})
+            .then(function (dbArticle) {
+                // If we were able to successfully find Articles, send them back to the client
+                var hbsObject;
+                hbsObject = {
+                    articles: dbArticle
+                };
+                res.render("saved.handlebars", hbsObject);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+    });
+
+    app.put("/remove/:id", function (req, res) {
+        console.log("remove article");
+        console.log("req " + req.body);
+        db.Article.findOneAndUpdate({_id: req.params.id}, {isSaved: false})
+            .then(function (data) {
+                // If we were able to successfully find Articles, send them back to the client
+                res.json(data);
+            })
+            .catch(function (err) {
+                // If an error occurred, send it to the client
+                res.json(err);
+            });
+        ;
+    });
+
 
 };
