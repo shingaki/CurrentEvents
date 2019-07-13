@@ -9,6 +9,10 @@ module.exports = function(app) {
         res.render("index.handlebars");
     });
 
+    app.get("/", function (req, res) {
+        res.render("index.handlebars");
+    });
+
     app.get("/saved", function (req, res) {
         res.render("saved.handlebars");
     });
