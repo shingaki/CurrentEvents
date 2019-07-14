@@ -53,24 +53,37 @@ module.exports = function (app) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(response.data);
 
+            // var test = $('.heading-content-small :first-child').text();
+            // console.log("test " + test);
+
             // Now, we grab every h2 within an article tag, and do the following:
-            $("article span").each(function (i, element) {
+            $(".article-info").each(function (i, element) {
                 // Save an empty result object
                 var result = {};
 
+                // var test = $('.heading-content-small').text();
+                // console.log("test " + test);
+
                 // Add the text and href of every link, and save them as properties of the result object
+                // result.title = $('.heading-content-small').text();
+
+
                 result.title = $(this)
-                    .children("a")
+                    .children(".heading-content-small")
                     .text();
                 result.link = $(this)
                     .children("a")
                     .attr("href");
+                result.summary = $(this)
+                    .children(".article-info-extended")
+                    .text();
 
-                result.link = "https://www.si.com" + result.link;
+
+                result.link = "https://www.si.com/" + result.link;
                 console.log("updated link " + result.link);
 
                 // Create a new Article using the `result` object built from scraping
-                if (result.title) {
+                if ((result.title) && (result.summary)) {
                     db.Article.create(result)
                         .then(function (dbArticle) {
                             // View the added result in the console
