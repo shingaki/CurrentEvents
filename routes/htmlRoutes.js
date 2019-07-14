@@ -1,6 +1,10 @@
 
 module.exports = function(app) {
 
+    app.get("/clear", function (req, res) {
+        res.render("index.handlebars");
+    });
+
     app.get("/browse", function (req, res) {
         res.render("browse.handlebars");
     });
@@ -16,4 +20,6 @@ module.exports = function(app) {
     app.get("/saved", function (req, res) {
         res.render("saved.handlebars");
     });
+
+
 }
