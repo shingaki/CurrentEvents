@@ -41,11 +41,11 @@ app.use(logger("dev"));
 
 
 // Connect to the Mongo DB - locally only
-mongoose.connect("mongodb://localhost/currentEvents", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/currentEvents", { useNewUrlParser: true });
 
 // connect to Mongo DB on heroku
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-// mongoose.connect(MONGODB_URI);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI);
 
 
 
