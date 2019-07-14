@@ -20,6 +20,10 @@ var ArticleSchema = new Schema({
         type: String,
         required: false
     },
+    byline: {
+        type: String,
+        required: false
+    },
     // is saved
     isSaved: {
         type: Boolean,
